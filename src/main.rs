@@ -12,6 +12,7 @@ fn main() {
     println!("sub_arr_4 :{}",check_containt(&mut org_arr, &mut [1,2]));
     println!("sub_arr_5 :{}",check_containt(&mut org_arr, &mut [2,3,4,6]));
     println!("sub_arr_6 :{}",check_containt(&mut org_arr, &mut [2,3,4,6,1,1,1,1,1,11,1,1,1,1,1,1,1,1,11]));
+    println!("sub_arr_7 :{}",check_containt(&mut org_arr, &mut []));
     
     // Bai 2
     println!("=== COUNT ME ==="); 
