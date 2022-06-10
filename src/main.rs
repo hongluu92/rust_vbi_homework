@@ -1,4 +1,6 @@
 use std::io;
+use regex::Regex;
+
 
 fn main() {
     let mut org_arr = [1,2,3,4,5,6,7,8,9];
@@ -15,14 +17,22 @@ fn main() {
     let input_text = String::from("asdasd3asd32Ds14gfsgfdgdfgdfgf");
     loop {
         let mut buff = String::new();
-        println!("Enter a character (x)");
+        println!("Please enter a character (x)");
+        println!("Enter 1 to exit");
         io::stdin().read_line(&mut buff).unwrap();
         let buff = buff.trim();
+        if buff.len() > 1 {
+            continue;   
+        }
         if buff == "1" {
             break;
         }
-        println!("count (x)  {}", count_me_in(&buff, &input_text));
-        println!("count (x) ignore case {}", count_me_in_ingore_case(&buff, &input_text));      
+        // clear_screen();
+        println!("Input String :{}", input_text);
+        println!("count (x) :{}", count_me_in(&buff, &input_text));
+        println!("count (x) ignore case 1 : {}", count_me_in_ingore_case(&buff, &input_text));      
+        println!("count (x) ignore case 2 using regex : {}", count_me_in_ingore_case_regex(&buff, &input_text));      
+        println!("");
     }
 }
 fn check_containt( org_arr: &mut [i32], sub_arr: &mut [i32]) -> bool{
@@ -49,3 +59,12 @@ fn count_me_in( me: &str, input_text: &String ) -> usize {
 fn count_me_in_ingore_case( me: &str, input_text: &String ) -> usize {
     return input_text.to_lowercase().matches(&me.to_lowercase()).count();
 }
+
+fn count_me_in_ingore_case_regex( me: &str, input_text: &String ) -> usize {
+    let re_ignore_case = Regex::new(&format!("(?i){}",me)).unwrap();
+    return re_ignore_case.captures_iter(input_text).count();
+}
+
+// fn clear_screen() {
+//     std::process::Command::new("clear").status().unwrap();
+// }
