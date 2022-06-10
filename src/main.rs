@@ -2,6 +2,7 @@ use std::io;
 
 fn main() {
     let mut org_arr = [1,2,3,4,5,6,7,8,9];
+    // Bai 1
     println!("=== CHECK CONTAINT ==="); 
     println!("sub_arr_1 :{}",check_containt(&mut org_arr, &mut [1,2,3]));
     println!("sub_arr_2 :{}",check_containt(&mut org_arr, &mut [2,3,4]));
@@ -9,6 +10,7 @@ fn main() {
     println!("sub_arr_4 :{}",check_containt(&mut org_arr, &mut [1,2]));
     println!("sub_arr_5 :{}",check_containt(&mut org_arr, &mut [2,3,4,6]));
     
+    // Bai 2
     println!("=== COUNT ME ==="); 
     let input_text = String::from("asdasd3asd32Ds14gfsgfdgdfgdfgf");
     loop {
